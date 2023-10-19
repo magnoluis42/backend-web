@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="../static/new_user.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="form">
+        <form id="form">
+
+            <h1>Faça seu cadastro</h1>
+            
+            <hr>
+
+            <div class="personal_data">
+                <input type="text" name="name" id="name" placeholder="Nome">
+                <input type="text" name="email" id="email" placeholder="Email">
+                <input type="text" name="password" id="password" placeholder="Senha">
+            </div>
+
+            <div class="birth_date">
+                <input type="date" name="birth_date" id="birth_date" class="custom_date" placeholder="Escolha a data">
+            </div>
+
+            <div class="sex">
+
+                <div class="choice">
+                    <span>Masculino</span>
+                    <input type="radio" name="sex" id="sex">
+                </div>
+
+                <div class="choice">
+                    <span>Feminino</span>
+                    <input type="radio" name="sex" id="sex">
+                </div>
+                
+            </div>
+
+            <button type="submit" id="submitButton" >Criar</button>
+        </form>
+        
+    </div>
+
+    <script src="../templates/JS/Post.js"></script>
+</body>
+</html>
