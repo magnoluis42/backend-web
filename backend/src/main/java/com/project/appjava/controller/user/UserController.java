@@ -10,7 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.project.appjava.dtos.user.UserRequestDTO;
+import com.project.appjava.dtos.user.UserRegisterDTO;
 import com.project.appjava.dtos.user.UserResponseDTO;
 
 import javax.validation.Valid;
@@ -23,9 +23,9 @@ public class UserController {
     public UserService userService;
 
     @PostMapping("/register")
-    public ResponseEntity<UserResponseDTO> register(@RequestBody @Valid UserRequestDTO userRequestDTO){
+    public ResponseEntity<UserResponseDTO> register(@RequestBody @Valid UserRegisterDTO userRegisterDTO){
     ModelMapper modelMapper = new ModelMapper();
-    UserDTO userDTO = modelMapper.map(userRequestDTO, UserDTO.class);
+    UserDTO userDTO = modelMapper.map(userRegisterDTO, UserDTO.class);
     var saveUser = userService.register(userDTO);
     return new ResponseEntity<>(modelMapper.map(userDTO, UserResponseDTO.class), HttpStatus.CREATED);
     }

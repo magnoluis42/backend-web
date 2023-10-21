@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/product")
 public class ProductController {
@@ -26,8 +28,9 @@ public class ProductController {
 
     }
 
-    @GetMapping("/find")
-    public String find(){
-        return "<h1>Rota aberta</h1>";
+    @GetMapping("/list")
+    public ResponseEntity<List<ProductDTO>> findAll(){
+        List<ProductDTO> productDTOS = productService.findAll();
+        return ResponseEntity.ok().body(productDTOS);
     }
 }

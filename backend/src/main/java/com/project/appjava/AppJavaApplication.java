@@ -1,6 +1,5 @@
 package com.project.appjava;
 
-import com.project.appjava.entity.user.UserRole;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
