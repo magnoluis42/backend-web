@@ -9,10 +9,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ProductDTO {
-
+public class ProductResponseDTO {
     private String name;
-    private Double price;
-    private String description;
-    private String image;
 }

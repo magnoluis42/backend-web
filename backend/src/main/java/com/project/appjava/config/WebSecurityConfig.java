@@ -10,18 +10,19 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-@EnableWebSecurity
 public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
+        http    .cors().and()
                 .httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST,"/user/register").permitAll()
-                .antMatchers(HttpMethod.POST, "/product/register/").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "/product/register").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, "/product/update/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE,"/product/remove/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET,"/product/list").permitAll()
+                .antMatchers(HttpMethod.POST,"/user/register").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable();

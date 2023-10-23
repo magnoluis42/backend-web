@@ -1,5 +1,6 @@
 package com.project.appjava.entity.product;
 
+import com.project.appjava.enums.OrderStatus;
 import lombok.*;
 
 import javax.persistence.*;
@@ -10,7 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "pedidos")
+@Table(name = "TB_ORDER")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

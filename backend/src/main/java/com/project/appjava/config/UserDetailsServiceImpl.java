@@ -1,8 +1,11 @@
 package com.project.appjava.config;
 
 import com.project.appjava.entity.user.User;
+import com.project.appjava.enums.RoleName;
+import com.project.appjava.repository.user.RoleRepository;
 import com.project.appjava.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -10,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -17,6 +21,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private RoleRepository roleRepository;
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Optional<User> userOptional = userRepository.findByEmail(email);
@@ -30,8 +36,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                     true,
                     true,
                     true,
-                    user.getAuthorities()
+                    user.getRoles()
             );
         }
     }
+
 }

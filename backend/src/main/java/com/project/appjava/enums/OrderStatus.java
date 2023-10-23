@@ -1,4 +1,4 @@
-package com.project.appjava.entity.product;
+package com.project.appjava.enums;
 
 public enum OrderStatus {
     PENDENTE,

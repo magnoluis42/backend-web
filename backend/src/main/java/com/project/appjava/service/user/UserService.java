@@ -1,16 +1,22 @@
 package com.project.appjava.service.user;
 
+import com.project.appjava.config.UserDetailsServiceImpl;
 import com.project.appjava.config.WebSecurityConfig;
 import com.project.appjava.dtos.user.UserDTO;
+import com.project.appjava.entity.user.Role;
 import com.project.appjava.entity.user.User;
 import com.project.appjava.enums.RoleName;
 import com.project.appjava.exception.EmailExistsException;
+import com.project.appjava.exception.GlobalExceptionHandler;
+import com.project.appjava.repository.user.RoleRepository;
 import com.project.appjava.repository.user.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.handler.UserRoleAuthorizationInterceptor;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Optional;
 
 @Service
@@ -30,8 +36,7 @@ public class UserService {
         }
         User user = modelMapper.map(userDTO, User.class);
         user.setPassword(webSecurityConfig.passwordEncoder().encode(user.getPassword()));
-        user.setName("Cliente" + user.getName());
-        var newUser = userRepository.save(user);
+        userRepository.save(user);
         return userDTO;
     }
     public Optional<UserDTO> findUserById(Long id){
